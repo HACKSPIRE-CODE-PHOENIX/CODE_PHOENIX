@@ -1,93 +1,109 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
-export default function WalletConnect() {
-  const [account, setAccount] = useState<string | null>(null);
+export default function ConnectPage() {
+  const { connect, disconnect, account, connected, wallets } = useWallet();
+  const [name, setName] = useState("");
+  const [savedName, setSavedName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // 🔹 Load connection on mount
+  // 🔹 Load name from Firestore once wallet is connected
   useEffect(() => {
-    const connectIfPreviouslyConnected = async () => {
-      if ("aptos" in window) {
-        const wallet = (window as any).aptos;
-
-        // Check if previously connected
-        const wasConnected = localStorage.getItem("petraConnected");
-        if (wasConnected) {
-          try {
-            const acc = await wallet.account();
-            if (acc?.address) {
-              setAccount(acc.address);
-            }
-          } catch {
-            localStorage.removeItem("petraConnected");
-          }
-        }
+    const fetchUser = async () => {
+      if (connected && account?.address) {
+        const userDoc = await getDoc(doc(db, "users", account.address.toString())
+);
+        if (userDoc.exists()) setSavedName(userDoc.data().name);
       }
     };
+    fetchUser();
+  }, [connected, account]);
 
-    connectIfPreviouslyConnected();
-  }, []);
-
-  // 🔹 Connect Wallet
   const connectWallet = async () => {
-    if (!("aptos" in window)) {
-      showError("Petra wallet not installed!");
-      return;
-    }
-
-    const wallet = (window as any).aptos;
     try {
-      const response = await wallet.connect();
-      setAccount(response.address);
-      localStorage.setItem("petraConnected", "true"); // ✅ persist connection
+      // You can optionally select a wallet (Petra, Martian, etc.)
+      // This connects to the first available wallet.
+      if (wallets.length > 0) {
+        await connect(wallets[0].name);
+      } else {
+        showError("No Aptos wallets found. Install Petra or Martian!");
+      }
     } catch (err) {
-      showError("Error connecting to wallet, try again.");
+      showError("Error connecting wallet. Try again!");
     }
   };
 
-  // 🔹 Disconnect Wallet
-  const disconnectWallet = async () => {
+  const createProfile = async () => {
+    if (!account?.address || !name.trim()) return;
     try {
-      await (window as any).aptos.disconnect();
-    } catch {}
-    localStorage.removeItem("petraConnected");
-    setAccount(null);
+      await setDoc(doc(db, "users", account.address.toString())
+, {
+        name,
+        createdAt: new Date().toISOString(),
+      });
+      setSavedName(name);
+    } catch {
+      showError("Failed to save profile.");
+    }
   };
 
-  // 🔹 Error Popup (2s)
   const showError = (msg: string) => {
     setError(msg);
-    setTimeout(() => setError(null), 2000);
+    setTimeout(() => setError(null), 2500);
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 mt-10">
+    <div className="flex flex-col items-center justify-center gap-4 mt-10 min-h-screen">
       {error && (
-        <div className="bg-red-500 text-white px-4 py-2 rounded-md">
-          {error}
-        </div>
+        <div className="bg-red-500 text-white px-4 py-2 rounded-md">{error}</div>
       )}
 
-      {account ? (
-        <>
-          <p className="text-green-600 font-medium">
-            Connected: {account.slice(0, 6)}...{account.slice(-4)}
-          </p>
-          <button
-            onClick={disconnectWallet}
-            className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
-          >
-            Disconnect
-          </button>
-        </>
-      ) : (
+      {!connected ? (
         <button
           onClick={connectWallet}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
         >
           Connect Wallet
         </button>
+      ) : (
+        <>
+          <p className="text-green-600 font-medium">
+            Connected: {account?.address.toString().slice(0, 6)}...{account?.address.toString().slice(-4)}
+
+          </p>
+
+          {!savedName ? (
+            <div className="flex flex-col gap-3 items-center">
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border rounded-lg px-3 py-2"
+              />
+              <button
+                onClick={createProfile}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+              >
+                Create Profile
+              </button>
+            </div>
+          ) : (
+            <p className="text-gray-700">
+              Welcome back, <span className="font-semibold">{savedName}</span> 👋
+            </p>
+          )}
+
+          <button
+            onClick={disconnect}
+            className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
+          >
+            Disconnect
+          </button>
+        </>
       )}
     </div>
   );
