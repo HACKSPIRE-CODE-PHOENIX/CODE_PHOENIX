@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8204f70-6253-4742-aed9-d6ffba77b241" name="Changes" comment="">
+    <list default="true" id="f8204f70-6253-4742-aed9-d6ffba77b241" name="Changes" comment="title and description added">
+      <change afterPath="$PROJECT_DIR$/app/connect/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/CoinCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/columns.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/data-table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +53,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Hackspire\CODE_PHOENIX\app" />
+      <recent name="C:\Hackspire\CODE_PHOENIX\components" />
+      <recent name="C:\Hackspire\CODE_PHOENIX\public\assets\icons" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
@@ -74,10 +92,33 @@
       <workItem from="1761901663310" duration="334000" />
       <workItem from="1761907828593" duration="2674000" />
       <workItem from="1761911393863" duration="1540000" />
+      <workItem from="1761913009912" duration="935000" />
+      <workItem from="1761918055310" duration="19990000" />
     </task>
+    <task id="LOCAL-00001" summary="title and description added">
+      <option name="closed" value="true" />
+      <created>1761913210903</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761913210903</updated>
+    </task>
+    <task id="LOCAL-00002" summary="title and description added">
+      <option name="closed" value="true" />
+      <created>1761913224178</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761913224178</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="title and description added" />
+    <option name="LAST_COMMIT_MESSAGE" value="title and description added" />
   </component>
 </project>
