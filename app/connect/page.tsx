@@ -64,13 +64,13 @@ export default function ConnectPage() {
       {!connected ? (
         <button
           onClick={connectWallet}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="bg-[#ff5c00] text-white px-7 py-4 text-3xl rounded-lg hover:bg-[#622400] hover:font-bold transition"
         >
           Connect Wallet
         </button>
       ) : (
         <>
-          <p className="text-green-600 font-medium">
+          <p className="text-[#ff5c00] font-2xl font-medium">
             Connected: {account?.address.toString().slice(0, 6)}...{account?.address.toString().slice(-4)}
 
           </p>
@@ -86,7 +86,7 @@ export default function ConnectPage() {
               />
               <button
                 onClick={createProfile}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                className="bg-[#ff5c00] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
               >
                 Create Profile
               </button>
@@ -99,7 +99,7 @@ export default function ConnectPage() {
 
           <button
             onClick={disconnect}
-            className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
+            className="bg-[#692802] text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
           >
             Disconnect
           </button>

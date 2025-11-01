@@ -59,7 +59,7 @@ export default function DonateButton({ recipient }: DonateButtonProps) {
         placeholder="Enter amount (APT)"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="w-full border border-gray-300 rounded-lg px-3 py-2"
+        className="w-full border border-gray-200 rounded-lg px-3 py-2"
       />
 
       <button
@@ -67,16 +67,16 @@ export default function DonateButton({ recipient }: DonateButtonProps) {
         disabled={loading}
         className={`w-full px-4 py-2 rounded-lg text-white transition ${
           loading
-            ? "bg-gray-400 cursor-not-allowed"
+            ? "bg-gray-200 cursor-not-allowed"
             : connected
-            ? "bg-blue-600 hover:bg-blue-700"
+            ? "bg-[#ff5c00] hover:bg-[#933600]"
             : "bg-yellow-600 hover:bg-yellow-700"
         }`}
       >
         {loading
           ? "Processing..."
           : connected
-          ? "Donate Now 💖"
+          ? "Donate Now"
           : "Connect Wallet to Donate"}
       </button>
     </div>

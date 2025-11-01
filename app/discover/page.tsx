@@ -72,18 +72,46 @@ export default function DiscoverPage() {
       <div className="flex flex-col gap-6">
         {posts.map((post) => (
           <Link href={`/discover/${post.id}`} key={post.id}>
-            <div className="border border-[#ff5c00] bg-[#2a190f] flex justify-around rounded-xl shadow-sm p-5  hover:shadow-md transition cursor-pointer">
-              <h2 className="text-xl font-semibold text-white mb-2">
-                <span>Title: </span>{post.title}
-              </h2>
-              <p className="text-gray-200 mb-3">{post.description}</p>
-              <p className="text-gray-200 font-medium mb-2">
-                🎯 Goal: {post.goal} APT
-              </p>
-              <p className="text-sm text-gray-200">
-                👤 Creator: {post.creator.slice(0, 6)}...{post.creator.slice(-4)}
-              </p>
-            </div>
+            <div className="w-full max-w-3xl mx-auto bg-[#2a190f] border border-[#ff5c00]/60 rounded-2xl px-6 py-5 flex flex-wrap md:flex-nowrap items-center justify-between shadow-md hover:shadow-lg transition-shadow duration-300">
+  {/* Left Section */}
+  <div className="flex flex-col text-left">
+    <h2 className="text-xl font-semibold text-white">
+      {post.title || "The Fulokpi Welfare Fund"}
+    </h2>
+    <p className="text-sm text-gray-400 mt-1">
+      {post.organization || "The Fulokpi Welfare Association"}
+    </p>
+  </div>
+
+  {/* Middle Section */}
+  <div className="flex items-center justify-center gap-8 text-gray-200 mt-4 md:mt-0">
+    <div className="flex  flex-col items-center">
+      <span className="text-xs uppercase tracking-wider text-gray-400">
+        Target
+      </span>
+      <span className="text-lg font-semibold text-white flex items-center gap-1">
+        {post.goal} <span className="text-[#ff5c00] font-bold">APT</span>
+      </span>
+    </div>
+    <div className="flex  flex-col items-center">
+      <span className="text-xs uppercase tracking-wider text-gray-400">
+        Cause
+      </span>
+      <span className="px-3 py-1 rounded-full bg-[#3b2415] text-sm text-gray-300">
+        {post.description}
+      </span>
+    </div>
+    <div className="flex  flex-col items-center">
+      <span className="text-xs uppercase tracking-wider text-gray-400">
+        Milestones
+      </span>
+      <span className="px-3 py-1 rounded-full bg-[#3b2415] text-sm text-gray-300">
+        3
+      </span>
+    </div>
+  </div>
+</div>
+
           </Link>
         ))}
       </div>
