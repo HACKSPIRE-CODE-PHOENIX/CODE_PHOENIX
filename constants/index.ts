@@ -54,3 +54,78 @@ export const beneficiaryData: Cause[] = [
     { cause: "Disaster Relief", tokens: 1000 },
     { cause: "Education", tokens: 900 },
 ]
+
+interface ExploreCardProps  {
+    fund: string,
+    ngo: string,
+    target: string,
+    num: number,
+    causeTitle: string,
+    causeDes: string,
+    milestoneTitle: string,
+    milestoneNum: number
+}
+
+export const explorecard: ExploreCardProps[] = [
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+    },
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+    },
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+    },
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+    },
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+    },
+    {
+        fund: "The Fulokpi Welfare Fund",
+        ngo: "The Fulkopi Welfare Association",
+        target: "Target",
+        num: 500,
+        causeTitle: "Cause",
+        causeDes: "Nature",
+        milestoneTitle: "Milestone",
+        milestoneNum: 3
+
+    },
+]

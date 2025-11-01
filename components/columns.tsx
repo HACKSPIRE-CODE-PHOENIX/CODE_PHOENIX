@@ -20,7 +20,7 @@ export const columns: ColumnDef<Transaction>[] = [
     },
     {
         accessorKey: "country",
-        header: "Country",
+        header: "Fund Name",
     },
     {
         accessorKey: "tokens",

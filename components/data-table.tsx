@@ -46,7 +46,7 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div className={`w-[${width}px] rounded-xl border border-[#2a2a2a] bg-[#1b1b1b] p-4`}>
+        <div className={`w-[${width}px] rounded-xl border border-[#2a2a2a] bg-[url('/assets/images/Ellipse.svg')] p-4`}>
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold text-white">{title}</h2>

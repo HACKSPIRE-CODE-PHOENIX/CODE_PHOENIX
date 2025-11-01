@@ -7,10 +7,25 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/component
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ChevronDown } from "lucide-react"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function Sidebar() {
+    const [open, setOpen] = React.useState(false);
     return (
-        <aside className="flex flex-col justify-between h-screen w-72 bg-[#121212] text-white p-4 border-r border-gray-800">
+        <aside className="flex py-6 flex-col justify-between h-screen w-72 bg-[#0e0e0e] text-white p-4 border-r border-gray-800">
             {/* ---- Logo ---- */}
             <div>
                 <div className="flex items-center gap-2 mb-6">
@@ -20,7 +35,7 @@ export default function Sidebar() {
                 {/* ---- Menu ---- */}
                 <nav className="space-y-3">
                     <Link
-                        href="#"
+                        href="/"
                         className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-800 transition"
                     >
                         <Image src="/assets/icons/home-2.svg" alt="Home Icon" width={20} height={20} />
@@ -32,7 +47,9 @@ export default function Sidebar() {
                         <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 rounded-md hover:bg-gray-800 transition">
                             <div className="flex items-center gap-3">
                                 <Image src="/assets/icons/coin.svg" alt="Donate Icon" width={20} height={20} />
-                                <span className="text-[#FF5C00]">Donate</span>
+                                <Link href="/explore">
+                                    <span className="text-[#FF5C00] cursor-pointer">Donate</span>
+                                </Link>
                             </div>
                             <ChevronDown className="w-4 h-4" />
                         </CollapsibleTrigger>
@@ -95,7 +112,9 @@ export default function Sidebar() {
                         <p className="text-xs text-gray-400">Account settings</p>
                     </div>
                 </div>
-                <ChevronDown className="w-4 h-4 text-gray-400" />
+                <Button onClick={() => setOpen(true)} className="cursor-pointer">
+                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                </Button>
             </div>
         </aside>
     )

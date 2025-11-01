@@ -4,7 +4,7 @@ import Image from 'next/image'
 interface CoinCardProps {
     title: string;
     description: string;
-    buttonText: string;
+    buttonText?: string;
 }
 
 const CoinCard = ({title, description, buttonText}: CoinCardProps) => {
@@ -20,9 +20,11 @@ const CoinCard = ({title, description, buttonText}: CoinCardProps) => {
                 <p className="text-sm text-gray-400 mb-1">{title}</p>
                 <h2 className="text-3xl font-bold mb-3">{description}</h2>
 
-                <button className="bg-gradient-to-b from-[#ff9500] to-[#ff5c00] text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:opacity-90 transition">
-                    {buttonText}
-                </button>
+                {buttonText && (
+                    <button className="bg-gradient-to-b from-[#ff9500] to-[#ff5c00] text-black font-semibold px-5 py-2 rounded-lg shadow-md hover:opacity-90 transition">
+                        {buttonText}
+                    </button>
+                )}
             </div>
         </div>
     )
