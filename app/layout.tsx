@@ -26,14 +26,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* ✅ Wrap all Client Components under WalletProvider */}
         <WalletProvider>
           
           <Toaster position="top-right" reverseOrder={false} />
-          <Navbar />
-          {children}
+          <div className="fixed top-0 left-0 h-screen w-56">
+                <Navbar />
+            </div>
+            <main className="flex-1 ml-64 p-6 ">
+                {children}
+            </main>
         </WalletProvider>
       </body>
     </html>

@@ -69,18 +69,18 @@ export default function DiscoverPage() {
         Discover Donation Requests 🌍
       </h1>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="flex flex-col gap-6">
         {posts.map((post) => (
           <Link href={`/discover/${post.id}`} key={post.id}>
-            <div className="border rounded-xl shadow-sm p-5 bg-white hover:shadow-md transition cursor-pointer">
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                {post.title}
+            <div className="border border-[#ff5c00] bg-[#2a190f] flex justify-around rounded-xl shadow-sm p-5  hover:shadow-md transition cursor-pointer">
+              <h2 className="text-xl font-semibold text-white mb-2">
+                <span>Title: </span>{post.title}
               </h2>
-              <p className="text-gray-600 mb-3">{post.description}</p>
-              <p className="text-gray-700 font-medium mb-2">
+              <p className="text-gray-200 mb-3">{post.description}</p>
+              <p className="text-gray-200 font-medium mb-2">
                 🎯 Goal: {post.goal} APT
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-200">
                 👤 Creator: {post.creator.slice(0, 6)}...{post.creator.slice(-4)}
               </p>
             </div>
